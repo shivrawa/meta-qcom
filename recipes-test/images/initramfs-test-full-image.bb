@@ -24,6 +24,10 @@ PACKAGE_INSTALL += " \
     weston-examples \
 "
 
+PACKAGE_INSTALL:append:aarch64 = " \
+    fastrpc-tests \
+"
+
 PACKAGE_INSTALL:append:libc-glibc = " \
     rt-tests \
 "

@@ -1,5 +1,7 @@
 SUMMARY = "Extra userspace packages for QCOM platforms"
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 inherit packagegroup
 
 PACKAGES = " \
@@ -15,6 +17,6 @@ RDEPENDS:${PN}-boot-essential = " \
     tqftpserv \
 "
 
-RDEPENDS:${PN}-boot-additional = " \
+RDEPENDS:${PN}-boot-additional:append:aarch64 = " \
     fastrpc \
 "

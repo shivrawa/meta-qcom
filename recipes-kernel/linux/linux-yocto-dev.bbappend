@@ -4,13 +4,9 @@ COMPATIBLE_MACHINE:qcom = "(qcom)"
 FILESEXTRAPATHS:prepend:qcom := "${THISDIR}/${PN}:"
 
 SRC_URI:append:qcom = " \
-    file://qcm6490-board-dts/0001-FROMLIST-arm64-dts-qcom-qcm6490-idp-Update-protected.patch \
-    file://qcm6490-board-dts/0002-arm64-dts-qcom-sc7280-Add-global-PCIe-interrupt.patch \
     file://qcm6490-board-dts/0001-dt-bindings-PCI-Add-binding-for-Toshiba-TC9563-PCIe-.patch \
     file://qcm6490-board-dts/0002-arm64-dts-qcom-qcs6490-rb3gen2-Add-TC9563-PCIe-switc.patch \
     file://qcm6490-board-dts/0001-PENDING-enable-xHCI.patch \
-    file://qcm6490-board-dts/0002-arm64-dts-qcom-qcm6490-idp-Update-the-LPASS.patch \
-    file://qcm6490-board-dts/0003-arm64-dts-qcom-qcs6490-rb3gen2-Update-the-LPASS-audi.patch \
     file://qcm6490-board-dts/0001-arm64-dts-qcom-sc7280-Add-gpr-node.patch \
     file://qcm6490-board-dts/0002-arm64-dts-qcom-sc7280-Add-WSA-SoundWire-and-LPASS-su.patch \
     file://qcm6490-board-dts/0003-arm64-dts-qcom-qcs6490-rb3gen2-Modify-WSA-and-VA-mac.patch \
@@ -19,8 +15,6 @@ SRC_URI:append:qcom = " \
     file://qcm6490-board-dts/0001-dts-rb3gen2-soundwire-checkin.patch \
     file://workarounds/0001-QCLINUX-arm64-dts-qcom-qcm6490-disable-sdhc1-for-ufs.patch \
     file://workarounds/0001-PENDING-arm64-dts-qcom-Remove-voltage-vote-support-f.patch \
-    file://workarounds/0001-media-venus-protect-against-spurious-interrupts-duri.patch \
-    file://workarounds/0001-media-venus-hfi-explicitly-release-IRQ-during-teardo.patch \
     file://drivers/0003-PCI-Add-new-start_link-stop_link-function-ops.patch \
     file://drivers/0004-PCI-dwc-Add-host_start_link-host_start_link-hooks-fo.patch \
     file://drivers/0005-PCI-dwc-Implement-.start_link-.stop_link-hooks.patch \

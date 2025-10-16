@@ -34,7 +34,7 @@ local_conf_header:
     INHERIT += "buildhistory"
     INHERIT += "rm_work"
   cmdline: |
-    KERNEL_CMDLINE_EXTRA:append = " page_owner=on qcom_scm.download_mode=1"
+    KERNEL_CMDLINE_EXTRA:append = " qcom_scm.download_mode=1"
   qcomflash: |
     IMAGE_CLASSES += "image_types_qcom"
     IMAGE_FSTYPES += "qcomflash"
@@ -42,9 +42,9 @@ local_conf_header:
     DISTRO_FEATURES:append = " efi pni-names"
     EXTRA_IMAGE_FEATURES = "allow-empty-password empty-root-password allow-root-login"
     IMAGE_ROOTFS_EXTRA_SPACE = "307200"
+    WATCHDOG_RUNTIME_SEC:pn-systemd = "30"
 
 machine: unset
 
 target:
   - core-image-base
-  - packagegroup-qcom-ci

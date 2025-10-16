@@ -9,7 +9,6 @@ LICENSE = "CLOSED"
 FW_QCOM_NAME = "sm8350"
 
 FW_QCOM_LIST = "\
-    a660_zap.mbn a615_zap.mbn \
     adsp.mbn adspr.jsn adspua.jsn battmgr.jsn \
     cdsp.mbn cdspr.jsn \
     ipa_fws.mbn \
@@ -21,10 +20,8 @@ S = "${UNPACKDIR}"
 
 require recipes-bsp/firmware/firmware-qcom.inc
 require recipes-bsp/firmware/firmware-qcom-nhlos.inc
-require recipes-bsp/firmware/firmware-qcom-adreno.inc
 
 SPLIT_FIRMWARE_PACKAGES = "\
-    linux-firmware-qcom-${FW_QCOM_NAME}-adreno \
     linux-firmware-qcom-${FW_QCOM_NAME}-audio \
     linux-firmware-qcom-${FW_QCOM_NAME}-compute \
     linux-firmware-qcom-${FW_QCOM_NAME}-ipa \

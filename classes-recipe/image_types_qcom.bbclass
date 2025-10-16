@@ -7,11 +7,8 @@ IMAGE_TYPES += "qcomflash"
 
 QCOM_BOOT_FIRMWARE ?= ""
 
-QCOM_ESP_IMAGE ?= "esp-qcom-image"
+QCOM_ESP_IMAGE ?= "${@bb.utils.contains("MACHINE_FEATURES", "efi", "esp-qcom-image", "", d)}"
 QCOM_ESP_FILE ?= "${@'efi.bin' if d.getVar('QCOM_ESP_IMAGE') else ''}"
-
-# ARMv7 machines don't use EFI / UKI
-QCOM_ESP_IMAGE:qcom-armv7a = ""
 
 # There is currently no upstream-compatible way for the firmware to
 # identify and load the correct DTB from a combined-dtb that contains all
@@ -21,7 +18,7 @@ QCOM_DTB_DEFAULT ?= "${@os.path.basename(d.getVar('KERNEL_DEVICETREE').split()[0
 QCOM_DTB_FILE ?= "dtb.bin"
 
 QCOM_BOOT_FILES_SUBDIR ?= ""
-QCOM_PARTITION_FILES_SUBDIR ?= "${QCOM_BOOT_FILES_SUBDIR}"
+QCOM_PARTITION_FILES_SUBDIR ??= "${QCOM_BOOT_FILES_SUBDIR}"
 
 QCOM_PARTITION_CONF ?= "qcom-partition-conf"
 
@@ -91,8 +88,6 @@ create_qcomflash_pkg() {
 
     if [ -n "${QCOM_CDT_FILE}" ]; then
         install -m 0644 ${DEPLOY_DIR_IMAGE}/${QCOM_BOOT_FILES_SUBDIR}/${QCOM_CDT_FILE}.bin cdt.bin
-        # For machines with a published cdt file, let's make sure we flash it
-        sed -i '/label="cdt"/ s/filename="[^"]*"/filename="cdt.bin"/' rawprogram*.xml
     fi
 
     for logfs in `find ${DEPLOY_DIR_IMAGE}/${QCOM_BOOT_FILES_SUBDIR} -maxdepth 1 -type f -name 'logfs_*.bin'`; do
@@ -101,6 +96,10 @@ create_qcomflash_pkg() {
     for zeros in `find ${DEPLOY_DIR_IMAGE}/${QCOM_PARTITION_FILES_SUBDIR} -maxdepth 1 -type f -name 'zeros_*.bin'`; do
         install -m 0644 ${zeros} .
     done
+
+    if [ -e "${DEPLOY_DIR_IMAGE}/${QCOM_PARTITION_FILES_SUBDIR}/contents.xml" ]; then
+        install -m 0644 "${DEPLOY_DIR_IMAGE}/${QCOM_PARTITION_FILES_SUBDIR}/contents.xml" contents.xml
+    fi
 
     # boot firmware
     for bfw in `find ${DEPLOY_DIR_IMAGE}/${QCOM_BOOT_FILES_SUBDIR} -maxdepth 1 -type f \

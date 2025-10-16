@@ -1,5 +1,5 @@
-SOC_FAMILY:prepend = "qcom:"
 require conf/machine/include/soc-family.inc
+MACHINEOVERRIDES =. "qcom:"
 
 # Set a default set of MACHINE_FEATURES, indivudual MACHINEs can append it
 MACHINE_FEATURES = "alsa bluetooth usbgadget usbhost wifi"

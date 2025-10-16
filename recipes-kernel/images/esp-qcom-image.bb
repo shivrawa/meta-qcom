@@ -8,7 +8,7 @@ KERNELDEPMODDEPEND = ""
 KERNEL_DEPLOY_DEPEND = ""
 
 ESPFOLDER = ""
-inherit image uki uki-esp-image
+inherit image uki uki-esp-image features_check
 
 UKI_FILENAME = "${EFI_LINUX_IMG}"
 
@@ -37,3 +37,6 @@ remove_unused_files() {
 IMAGE_PREPROCESS_COMMAND:append = " remove_unused_files"
 
 do_uki[vardeps] += "KERNEL_CMDLINE_EXTRA"
+
+# ESP image is currently only used on EFI machines
+REQUIRED_MACHINE_FEATURES = "efi"

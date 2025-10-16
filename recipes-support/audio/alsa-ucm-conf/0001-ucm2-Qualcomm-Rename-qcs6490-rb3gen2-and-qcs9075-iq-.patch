@@ -1,4 +1,4 @@
-From 78fca8273bcaa6785cdce2dab8c36b9294afbe66 Mon Sep 17 00:00:00 2001
+From ff1773a21904d678bc46f8cb4f97f0b1e2c65568 Mon Sep 17 00:00:00 2001
 From: Mohammad Rafi Shaik <mohammad.rafi.shaik@oss.qualcomm.com>
 Date: Sun, 20 Jul 2025 21:28:44 +0530
 Subject: [PATCH] FROMLIST: ucm2: Qualcomm: Rename qcs6490-rb3gen2 and
@@ -7,37 +7,37 @@ Subject: [PATCH] FROMLIST: ucm2: Qualcomm: Rename qcs6490-rb3gen2 and
 Rename the ucm2 conf for Qualcomm qcs6490-rb3gen2 and qcs9075-iq-evk.
 
 qcs6490-rb3gen2-snd-card.conf -> QCS6490-RB3Gen2.conf
-qcs9075-iq-evk-snd-card.conf -> QCS9075-IQ-EVK.conf
+qcs9075-iq-evk-snd-card.conf -> LEMANS-EVK.conf
 
 Removed snd-card tags from conf files and update the
-mixer settings for QCS9075-IQ-EVK.
+mixer settings for LEMANS-EVK.
 
 Signed-off-by: Mohammad Rafi Shaik <mohammad.rafi.shaik@oss.qualcomm.com>
 Upstream-Status: Submitted [https://github.com/alsa-project/alsa-ucm-conf/pull/596]
 ---
- .../{qcs6490-rb3gen2-snd-card.conf => QCS6490-RB3Gen2.conf}   | 0
- .../{qcs9075-iq-evk-snd-card => qcs9075-iq-evk}/HiFi.conf     | 4 ++--
- .../QCS9075-IQ-EVK.conf}                                      | 2 +-
- .../{qcs6490-rb3gen2-snd-card.conf => QCS6490-RB3Gen2.conf}   | 0
- .../{qcs9075-iq-evk-snd-card.conf => QCS9075-IQ-EVK.conf}     | 2 +-
- 5 files changed, 4 insertions(+), 4 deletions(-)
+ .../{qcs6490-rb3gen2-snd-card.conf => QCS6490-RB3Gen2.conf}  | 0
+ .../qcs9075-iq-evk-snd-card => qcs9100/lemans-evk}/HiFi.conf | 5 +++--
+ .../lemans-evk/LEMANS-EVK.conf}                              | 2 +-
+ .../{qcs6490-rb3gen2-snd-card.conf => QCS6490-RB3Gen2.conf}  | 0
+ .../qcs9075-iq-evk-snd-card.conf => qcs9100/LEMANS-EVK.conf} | 2 +-
+ 5 files changed, 5 insertions(+), 4 deletions(-)
  rename ucm2/Qualcomm/qcs6490/QCS6490-RB3Gen2/{qcs6490-rb3gen2-snd-card.conf => QCS6490-RB3Gen2.conf} (100%)
- rename ucm2/Qualcomm/qcs9075/{qcs9075-iq-evk-snd-card => qcs9075-iq-evk}/HiFi.conf (74%)
- rename ucm2/Qualcomm/qcs9075/{qcs9075-iq-evk-snd-card/qcs9075-iq-evk-snd-card.conf => qcs9075-iq-evk/QCS9075-IQ-EVK.conf} (52%)
+ rename ucm2/Qualcomm/{qcs9075/qcs9075-iq-evk-snd-card => qcs9100/lemans-evk}/HiFi.conf (73%)
+ rename ucm2/Qualcomm/{qcs9075/qcs9075-iq-evk-snd-card/qcs9075-iq-evk-snd-card.conf => qcs9100/lemans-evk/LEMANS-EVK.conf} (52%)
  rename ucm2/conf.d/qcs6490/{qcs6490-rb3gen2-snd-card.conf => QCS6490-RB3Gen2.conf} (100%)
- rename ucm2/conf.d/qcs9075/{qcs9075-iq-evk-snd-card.conf => QCS9075-IQ-EVK.conf} (52%)
+ rename ucm2/conf.d/{qcs9075/qcs9075-iq-evk-snd-card.conf => qcs9100/LEMANS-EVK.conf} (52%)
 
 diff --git a/ucm2/Qualcomm/qcs6490/QCS6490-RB3Gen2/qcs6490-rb3gen2-snd-card.conf b/ucm2/Qualcomm/qcs6490/QCS6490-RB3Gen2/QCS6490-RB3Gen2.conf
 similarity index 100%
 rename from ucm2/Qualcomm/qcs6490/QCS6490-RB3Gen2/qcs6490-rb3gen2-snd-card.conf
 rename to ucm2/Qualcomm/qcs6490/QCS6490-RB3Gen2/QCS6490-RB3Gen2.conf
-diff --git a/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/HiFi.conf b/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk/HiFi.conf
-similarity index 74%
+diff --git a/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/HiFi.conf b/ucm2/Qualcomm/qcs9100/lemans-evk/HiFi.conf
+similarity index 73%
 rename from ucm2/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/HiFi.conf
-rename to ucm2/Qualcomm/qcs9075/qcs9075-iq-evk/HiFi.conf
-index 6673324..f2be928 100644
+rename to ucm2/Qualcomm/qcs9100/lemans-evk/HiFi.conf
+index 6673324..5915d1c 100644
 --- a/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/HiFi.conf
-+++ b/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk/HiFi.conf
++++ b/ucm2/Qualcomm/qcs9100/lemans-evk/HiFi.conf
 @@ -3,8 +3,8 @@ SectionVerb {
  		TQ "HiFi"
  	}
@@ -49,38 +49,45 @@ index 6673324..f2be928 100644
  	]
  }
  
-diff --git a/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/qcs9075-iq-evk-snd-card.conf b/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk/QCS9075-IQ-EVK.conf
+@@ -25,5 +25,6 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId},1"
++		CaptureChannels 1
+ 	}
+ }
+diff --git a/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/qcs9075-iq-evk-snd-card.conf b/ucm2/Qualcomm/qcs9100/lemans-evk/LEMANS-EVK.conf
 similarity index 52%
 rename from ucm2/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/qcs9075-iq-evk-snd-card.conf
-rename to ucm2/Qualcomm/qcs9075/qcs9075-iq-evk/QCS9075-IQ-EVK.conf
-index 669ba6b..a45bc27 100644
+rename to ucm2/Qualcomm/qcs9100/lemans-evk/LEMANS-EVK.conf
+index 669ba6b..71e8c91 100644
 --- a/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/qcs9075-iq-evk-snd-card.conf
-+++ b/ucm2/Qualcomm/qcs9075/qcs9075-iq-evk/QCS9075-IQ-EVK.conf
++++ b/ucm2/Qualcomm/qcs9100/lemans-evk/LEMANS-EVK.conf
 @@ -1,6 +1,6 @@
  Syntax 4
  
  SectionUseCase."HiFi" {
 -	File "/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/HiFi.conf"
-+	File "/Qualcomm/qcs9075/qcs9075-iq-evk/HiFi.conf"
++	File "/Qualcomm/qcs9100/lemans-evk/HiFi.conf"
  	Comment "HiFi quality Music"
  }
 diff --git a/ucm2/conf.d/qcs6490/qcs6490-rb3gen2-snd-card.conf b/ucm2/conf.d/qcs6490/QCS6490-RB3Gen2.conf
 similarity index 100%
 rename from ucm2/conf.d/qcs6490/qcs6490-rb3gen2-snd-card.conf
 rename to ucm2/conf.d/qcs6490/QCS6490-RB3Gen2.conf
-diff --git a/ucm2/conf.d/qcs9075/qcs9075-iq-evk-snd-card.conf b/ucm2/conf.d/qcs9075/QCS9075-IQ-EVK.conf
+diff --git a/ucm2/conf.d/qcs9075/qcs9075-iq-evk-snd-card.conf b/ucm2/conf.d/qcs9100/LEMANS-EVK.conf
 similarity index 52%
 rename from ucm2/conf.d/qcs9075/qcs9075-iq-evk-snd-card.conf
-rename to ucm2/conf.d/qcs9075/QCS9075-IQ-EVK.conf
-index 1e49d38..42d4a64 100644
+rename to ucm2/conf.d/qcs9100/LEMANS-EVK.conf
+index 1e49d38..e458c25 100644
 --- a/ucm2/conf.d/qcs9075/qcs9075-iq-evk-snd-card.conf
-+++ b/ucm2/conf.d/qcs9075/QCS9075-IQ-EVK.conf
++++ b/ucm2/conf.d/qcs9100/LEMANS-EVK.conf
 @@ -1,6 +1,6 @@
  Syntax 4
  
  SectionUseCase."HiFi" {
 -	File "/Qualcomm/qcs9075/qcs9075-iq-evk-snd-card/HiFi.conf"
-+	File "/Qualcomm/qcs9075/qcs9075-iq-evk/HiFi.conf"
++	File "/Qualcomm/qcs9100/lemans-evk/HiFi.conf"
  	Comment "HiFi quality Music."
  }
 -- 
